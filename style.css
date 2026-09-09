@@ -10,9 +10,9 @@
 .dealer-strip{position:relative;z-index:3;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;min-height:96px;padding:17px 26px;background:#fff}
 .dealer-strip>span{color:var(--r);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
 .dealer-strip>div{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
-.dealer-strip a{display:inline-flex;border-radius:8px;transition:transform .2s,box-shadow .2s}
+.dealer-strip a{display:inline-flex;min-width:88px;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:10px 8px;border:1px solid #dbe3ee;border-radius:10px;background:#fff;transition:transform .2s,box-shadow .2s}
 .dealer-strip a:hover,.dealer-strip a:focus-visible{transform:translateY(-2px);box-shadow:0 7px 18px #16469b20;outline:2px solid #16469b;outline-offset:2px}
-.dealer-strip b{padding:7px 11px;border:1px solid #dbe3ee;border-radius:8px;background:#f6f8fc;color:#16469b;font-size:.82rem;letter-spacing:-.02em}
+.dealer-strip img{width:48px;height:48px;object-fit:contain}\n.dealer-strip b{color:#16469b;font-size:.78rem;letter-spacing:-.02em}
 @media(max-width:600px){.storefront{margin-left:-8px;margin-right:-8px;border-radius:18px}.storefront>img{min-height:330px;object-position:center;object-fit:cover}.storefront:after{inset:0 0 190px;background:linear-gradient(0deg,#06183bd9 0%,transparent 75%)}.storefront-card{left:14px;right:14px;bottom:204px;width:auto;padding:18px}.storefront-card p:not(.eyebrow){display:none}.dealer-strip{grid-template-columns:1fr;gap:9px;min-height:190px;padding:14px}.dealer-strip>div{justify-content:flex-start}.dealer-strip b{font-size:.74rem}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
