@@ -149,7 +149,8 @@ footer{display:grid;text-align:center}
 }
 
 /* Görsel arka planlı güncel duyurular */
-.board{min-height:560px;background:#08152a}
+.board{min-height:560px;background-color:#08152a;background-image:linear-gradient(#06112680,#06112680),var(--board-bg);background-position:center,var(--board-pos,center);background-size:cover;transition:background-image .35s ease}
+.board-head,.board-foot{position:relative;z-index:3;background:#061126a6;backdrop-filter:blur(6px)}
 .stage{position:relative;padding:18px}
 .announcement-slide{position:relative;align-self:stretch;display:flex;align-items:center;overflow:hidden;padding:30px;border-radius:20px}
 .announcement-slide:before{content:"";position:absolute;inset:0;background-image:var(--slide-bg);background-position:var(--bg-pos,center);background-size:cover;transform:scale(1.01)}
