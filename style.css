@@ -147,3 +147,19 @@ footer{display:grid;text-align:center}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
 .slide{transition:none}
 }
+
+/* Görsel arka planlı güncel duyurular */
+.board{min-height:560px;background:#08152a}
+.stage{position:relative;padding:18px}
+.announcement-slide{position:relative;align-self:stretch;display:flex;align-items:center;overflow:hidden;padding:30px;border-radius:20px}
+.announcement-slide:before{content:"";position:absolute;inset:0;background-image:var(--slide-bg);background-position:var(--bg-pos,center);background-size:cover;transform:scale(1.01)}
+.announcement-slide:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#061126f2 0%,#07162dd9 42%,#07162d70 70%,#07162d26 100%)}
+.announcement-slide .campaign-slide-copy{position:relative;z-index:2;width:min(100%,390px);padding:20px;border:1px solid #ffffff28;border-radius:16px;background:#07152cbd;box-shadow:0 14px 40px #0005;backdrop-filter:blur(5px)}
+.announcement-slide h2{margin:12px 0 8px;font-size:clamp(1.55rem,2.6vw,2.25rem)}
+.announcement-slide p{margin:0 0 10px;color:#eef3ff;font-size:.88rem;line-height:1.5}
+.notice-facts{display:grid;gap:6px;margin:10px 0 15px;padding-left:18px;color:#fff;font-size:.78rem;line-height:1.4}
+.notice-facts li::marker{color:#ff7380}
+.notice-actions{display:flex;flex-wrap:wrap;gap:8px}
+.slide .notice-actions a{padding:9px 12px;font-size:.76rem}
+.slide .notice-actions .ghost-action{border:1px solid #ffffff75;background:#07152c90;color:#fff}
+@media(max-width:600px){.board{min-height:660px}.stage{padding:12px}.announcement-slide{align-items:flex-end;padding:12px}.announcement-slide:after{background:linear-gradient(0deg,#061126fa 0%,#07162dcf 48%,#07162d3d 100%)}.announcement-slide .campaign-slide-copy{width:100%;padding:16px}.announcement-slide h2{font-size:1.42rem}.announcement-slide p{font-size:.8rem}.notice-facts{font-size:.75rem}.notice-actions{gap:6px}}
