@@ -164,3 +164,26 @@ footer{display:grid;text-align:center}
 .slide .notice-actions a{padding:9px 12px;font-size:.76rem}
 .slide .notice-actions .ghost-action{border:1px solid #ffffff75;background:#07152c90;color:#fff}
 @media(max-width:600px){.board{min-height:660px}.stage{padding:12px}.announcement-slide{align-items:flex-end;padding:12px}.announcement-slide:after{background:linear-gradient(0deg,#061126fa 0%,#07162dcf 48%,#07162d3d 100%)}.announcement-slide .campaign-slide-copy{width:100%;padding:16px}.announcement-slide h2{font-size:1.42rem}.announcement-slide p{font-size:.8rem}.notice-facts{font-size:.75rem}.notice-actions{gap:6px}}
+
+
+/* Görselli ürün grupları */
+.categories{position:relative;overflow:hidden;background:linear-gradient(145deg,#071f18 0%,#0b3026 55%,#15543f 100%);color:#fff}
+.categories:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 8% 5%,#e9203024,transparent 28%),radial-gradient(circle at 92% 92%,#72c39e20,transparent 30%);pointer-events:none}
+.categories>.heading,.categories>.category-grid{position:relative;z-index:1}
+.categories .heading>p{color:#c7d9d2}
+.categories .eyebrow{color:#ff7c87}
+.category-grid{gap:24px}
+.category-grid article{overflow:hidden;padding:0;border:1px solid #ffffff18;border-radius:22px;background:#fff;box-shadow:0 18px 45px #020d0938;transition:transform .25s ease,box-shadow .25s ease}
+.category-grid article:hover{transform:translateY(-7px);box-shadow:0 26px 55px #020d0960}
+.category-image{position:relative;height:195px;overflow:hidden;background:#dfe8e3}
+.category-image:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#071f1899)}
+.category-image img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.category-grid article:hover .category-image img{transform:scale(1.055)}
+.category-image span{position:absolute;right:15px;bottom:14px;z-index:2;display:grid;width:46px;height:46px;place-items:center;border:1px solid #ffffff50;border-radius:14px;background:#071f18d9;font-size:1.35rem;box-shadow:0 8px 20px #0004;backdrop-filter:blur(5px)}
+.category-body{padding:22px 23px 24px}
+.category-grid .category-body h3{margin:0 0 7px;color:#10231d;font-size:1.12rem}
+.category-grid .category-body p{min-height:52px;margin:0 0 17px;color:#64716c;font-size:.88rem;line-height:1.5}
+.category-body a{display:inline-flex;align-items:center;color:#d7192b;font-size:.82rem;font-weight:800}
+.category-body a:hover{color:#0b5c43}
+@media(max-width:900px){.category-image{height:205px}}
+@media(max-width:600px){.category-grid{gap:18px}.category-image{height:210px}.category-grid .category-body p{min-height:auto}.category-grid article:hover{transform:none}}
