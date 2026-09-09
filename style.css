@@ -10,6 +10,8 @@
 .dealer-strip{position:relative;z-index:3;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;min-height:96px;padding:17px 26px;background:#fff}
 .dealer-strip>span{color:var(--r);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
 .dealer-strip>div{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.dealer-strip a{display:inline-flex;border-radius:8px;transition:transform .2s,box-shadow .2s}
+.dealer-strip a:hover,.dealer-strip a:focus-visible{transform:translateY(-2px);box-shadow:0 7px 18px #16469b20;outline:2px solid #16469b;outline-offset:2px}
 .dealer-strip b{padding:7px 11px;border:1px solid #dbe3ee;border-radius:8px;background:#f6f8fc;color:#16469b;font-size:.82rem;letter-spacing:-.02em}
 @media(max-width:600px){.storefront{margin-left:-8px;margin-right:-8px;border-radius:18px}.storefront>img{min-height:330px;object-position:center;object-fit:cover}.storefront:after{inset:0 0 190px;background:linear-gradient(0deg,#06183bd9 0%,transparent 75%)}.storefront-card{left:14px;right:14px;bottom:204px;width:auto;padding:18px}.storefront-card p:not(.eyebrow){display:none}.dealer-strip{grid-template-columns:1fr;gap:9px;min-height:190px;padding:14px}.dealer-strip>div{justify-content:flex-start}.dealer-strip b{font-size:.74rem}}
 *{box-sizing:border-box}
@@ -61,7 +63,7 @@ nav a:hover{color:var(--r)}
 .campaign-slide h2{font-size:clamp(1.45rem,2.5vw,2.15rem)}
 .campaign-slide-copy p{font-size:.88rem;line-height:1.55}
 .slide .campaign-poster{display:block;overflow:hidden;padding:0;border:1px solid #ffffff35;border-radius:14px;background:#5f0912;box-shadow:0 16px 34px #0004}
-.campaign-poster img{width:100%;max-height:290px;object-fit:contain}
+.campaign-poster img{width:100%;max-height:320px;object-fit:contain;image-rendering:auto}
 .board-foot button{height:40px;width:40px;margin-left:6px;border:1px solid #ffffff40;border-radius:50%;background:#ffffff14;color:#fff}
 .dots{display:flex;gap:7px}
 .dots button{width:8px;height:8px;margin:0;padding:0;border:0;background:#ffffff55}
@@ -124,13 +126,14 @@ footer{flex-wrap:wrap}
 .hero{padding-top:44px}
 .hero h1{font-size:2.75rem}
 .points{flex-wrap:wrap}
-.board{min-height:390px}
+.board{min-height:620px}
 .stage{padding:20px}
-.campaign-slide{grid-template-columns:minmax(0,1fr) 118px;gap:13px}
+.campaign-slide{grid-template-columns:1fr;gap:13px}
 .campaign-slide h2{margin:12px 0 8px;font-size:1.3rem}
 .campaign-slide-copy p{font-size:.76rem;line-height:1.4}
 .campaign-slide-copy>a{padding:8px 10px;font-size:.72rem}
-.campaign-poster img{max-height:230px}
+.campaign-poster{justify-self:center;width:min(100%,280px)}
+.campaign-poster img{max-height:392px}
 .steps,.campaigns,.category-grid{grid-template-columns:1fr}
 .steps article+article{border-left:0;border-top:1px solid #ffffff22}
 .section{padding-top:58px;padding-bottom:58px}
