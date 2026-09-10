@@ -63,3 +63,16 @@ main{background:#f6f8f7}
 .brand-row a span{display:flex;min-width:0;flex-direction:column;gap:2px}
 .brand-row a b{color:#17352a}.brand-row a small{color:#65776e}
 @media(max-width:700px){.quick-search{grid-template-columns:1fr auto}.quick-search button[type="submit"]{padding:0 13px}.quick-search .search-clear{grid-column:1/-1;width:100%;margin:5px 0 0}.quick-chips{display:flex;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.quick-chips::-webkit-scrollbar{display:none}.quick-chips button{white-space:nowrap}.catalog-empty{padding:30px 18px}}
+
+
+/* Gerçek ürün vitrini ve mağaza rezervasyonu */
+.catalog-assurance{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 18px}
+.catalog-assurance span{padding:9px 12px;border:1px solid #cfe3d8;border-radius:999px;background:#edf8f2;color:#176242;font-size:.8rem;font-weight:800}
+.product-thumb{position:relative}
+.product-badge{position:absolute;top:12px;left:12px;padding:7px 10px;border-radius:8px;background:rgba(7,95,58,.94);color:#fff;font-size:.7rem;font-weight:800;box-shadow:0 4px 12px rgba(7,69,44,.2)}
+.product-meta{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 8px}
+.product-meta span{padding:6px 8px;border-radius:7px;background:#f1f6f3;color:#4f655a;font-size:.72rem;font-weight:700}
+.store-price{margin:0 0 14px;color:#17352a;font-size:.9rem;font-weight:800}
+.campaign-add{display:inline-flex;align-items:center;justify-content:center;margin:12px 0 0 8px;padding:10px 14px;border:1px solid #087443;border-radius:9px;background:#087443;color:#fff;font:inherit;font-size:.78rem;font-weight:800;cursor:pointer}
+.campaign-add:hover{background:#075f3a}
+@media(max-width:700px){.catalog-assurance{gap:7px;margin-top:16px}.catalog-assurance span{font-size:.73rem}.product-meta{margin-top:10px}.campaign-add{margin-left:6px}}
