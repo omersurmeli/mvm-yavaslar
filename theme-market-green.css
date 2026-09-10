@@ -22,3 +22,26 @@ nav{gap:4px}nav a{padding:10px 12px;border-radius:9px;color:#273e34;font-size:.8
 footer{background:#075a37}
 @media(max-width:1000px){header{min-height:74px}.hero{grid-template-columns:1fr}.hero>div{padding:32px}.board{min-height:560px}.brand-row{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){html{scroll-padding-top:90px}.topbar:before{content:"✓ Yetkili bayi ürünleri · Mağazada ödeme"}.topbar div{display:none}header{padding:9px 14px}.brand img{width:58px;height:46px}.brand span{display:none}.menu{border:1px solid #d7e1dc;background:#fff;color:#087443}.hero{margin-top:14px;padding:0 12px}.hero>div{padding:25px 20px}.storefront,.steps,.section,.catalog,.brand-showcase,.trust-section,.faq{padding-left:14px!important;padding-right:14px!important}.store-tools{padding:28px 14px}.quick-search button{min-width:0}.categories{margin:0 12px 38px;padding:34px 14px!important}.brand-row{grid-template-columns:repeat(2,1fr)}}
+
+/* Eski tema katmanlarını tamamen nötrleştir */
+main{background:#f6f8f7}
+.storefront{isolation:isolate;background:#fff!important}
+.storefront:after{background:linear-gradient(90deg,rgba(5,79,47,.72),rgba(5,79,47,.18) 48%,transparent 72%)!important}
+.storefront-card{border:1px solid rgba(255,255,255,.76)!important;background:rgba(255,255,255,.94)!important;color:#17352a!important;box-shadow:0 14px 34px rgba(23,52,40,.16)!important;backdrop-filter:blur(12px)}
+.storefront-card .eyebrow{color:#087443!important}.storefront-card h2{color:#17352a!important}.storefront-card p{color:#52665c!important}.storefront-card a{background:#087443!important;color:#fff!important}
+.dealer-strip>span,.dealer-strip b{color:#087443!important}.dealer-strip a:hover,.dealer-strip a:focus-visible{outline-color:#087443!important;box-shadow:0 8px 22px rgba(8,116,67,.15)!important}
+.board{background-color:#075a37!important;background-image:linear-gradient(90deg,rgba(4,68,40,.94),rgba(4,68,40,.70) 48%,rgba(4,68,40,.20)),var(--board-bg)!important}
+.board-head,.board-foot{background:rgba(5,82,49,.88)!important}.board-head{color:#d9f5e7!important}
+.announcement-slide:after{background:linear-gradient(90deg,rgba(3,55,34,.94) 0%,rgba(5,76,46,.78) 46%,rgba(5,76,46,.22) 100%)!important}
+.announcement-slide .campaign-slide-copy{border-color:rgba(255,255,255,.25)!important;background:rgba(4,70,42,.84)!important}
+.notice-facts li::marker{color:#8ee0b5!important}.slide .notice-actions a{color:#075a37!important}.slide .notice-actions .ghost-action{background:rgba(4,58,36,.65)!important;color:#fff!important}
+.red,.blue,.green{background:#087443!important}.pill{background:#edf8f2!important;color:#087443!important}
+.steps{color:#17211d!important}.steps article+article{border-left:1px solid #dfe7e2!important}.steps span{color:#62736a!important}.steps b{color:#17352a!important}
+.categories .eyebrow{color:#087443!important}.categories>.heading h2{color:#17352a!important}.categories>.heading>p{color:#66776f!important}.category-body a,.category-body a:hover{color:#087443!important}
+.campaigns a,.contact-card div{color:#087443!important}.featured-campaign{border-color:#8dcbae!important}
+.installment-offer{box-shadow:0 16px 38px rgba(8,116,67,.20)!important}.installment-number span{color:#c9f3dd!important}.installment-offer>a:hover{background:#edf8f2!important;color:#075a37!important}
+.about aside{background:#086b3f!important;border-radius:16px!important}.about aside small{color:#c9f3dd!important}
+.contact{background:#edf6f1!important;border-radius:18px!important}.contact-card{border:1px solid #dfe7e2!important;border-radius:14px!important;box-shadow:0 8px 24px rgba(23,52,40,.08)!important}
+.brand-showcase>p,.brand-note{color:#607068!important}.promo-banner .eyebrow{color:#d8f5e6!important}
+.mobile-actions{background:#fff!important;border-top:1px solid #dfe7e2!important}.mobile-actions a:first-child{color:#087443!important}
+@media(max-width:600px){.storefront:after{background:linear-gradient(0deg,rgba(4,68,40,.72),transparent 72%)!important}.storefront-card{background:rgba(255,255,255,.94)!important}.steps article+article{border-left:0!important;border-top:1px solid #dfe7e2!important}}
