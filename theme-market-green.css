@@ -45,3 +45,21 @@ main{background:#f6f8f7}
 .brand-showcase>p,.brand-note{color:#607068!important}.promo-banner .eyebrow{color:#d8f5e6!important}
 .mobile-actions{background:#fff!important;border-top:1px solid #dfe7e2!important}.mobile-actions a:first-child{color:#087443!important}
 @media(max-width:600px){.storefront:after{background:linear-gradient(0deg,rgba(4,68,40,.72),transparent 72%)!important}.storefront-card{background:rgba(255,255,255,.94)!important}.steps article+article{border-left:0!important;border-top:1px solid #dfe7e2!important}}
+
+
+/* Ürün arama ve alışveriş odaklı vitrin */
+.quick-search{display:grid!important;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;padding:6px;background:#fff}
+.quick-search input{min-width:0;border:0!important;outline:0;padding:14px 16px;background:transparent}
+.quick-search button{height:46px;padding:0 20px;border:0;font-weight:800;cursor:pointer}
+.quick-search .search-clear{min-width:0;margin-left:4px;border:1px solid #d7e1dc;background:#fff;color:#52665c}
+.search-whatsapp{display:inline-flex;margin-top:14px;color:#087443;font-size:.86rem;font-weight:800;text-decoration:none}
+.search-whatsapp:hover{text-decoration:underline}
+.catalog-empty{grid-column:1/-1;margin-top:12px;padding:38px 24px;border:1px dashed #b9ccc1;border-radius:14px;background:#fff;text-align:center}
+.catalog-empty strong{display:block;margin-bottom:8px;color:#17352a;font-size:1.08rem}
+.catalog-empty p{margin:0 auto 16px;max-width:570px;color:#607068}
+.catalog-empty a{display:inline-flex;padding:11px 16px;border-radius:9px;background:#087443;color:#fff;font-weight:800;text-decoration:none}
+.brand-row a{display:flex;align-items:center;justify-content:flex-start;gap:12px;padding:14px;text-decoration:none}
+.brand-row a img{flex:0 0 42px;object-fit:contain}
+.brand-row a span{display:flex;min-width:0;flex-direction:column;gap:2px}
+.brand-row a b{color:#17352a}.brand-row a small{color:#65776e}
+@media(max-width:700px){.quick-search{grid-template-columns:1fr auto}.quick-search button[type="submit"]{padding:0 13px}.quick-search .search-clear{grid-column:1/-1;width:100%;margin:5px 0 0}.quick-chips{display:flex;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.quick-chips::-webkit-scrollbar{display:none}.quick-chips button{white-space:nowrap}.catalog-empty{padding:30px 18px}}
