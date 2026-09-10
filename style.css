@@ -187,3 +187,16 @@ footer{display:grid;text-align:center}
 .category-body a:hover{color:#0b5c43}
 @media(max-width:900px){.category-image{height:205px}}
 @media(max-width:600px){.category-grid{gap:18px}.category-image{height:210px}.category-grid .category-body p{min-height:auto}.category-grid article:hover{transform:none}}
+
+
+/* Vade farksız taksit kampanyası */
+.installment-offer{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;margin:-8px 0 30px;padding:24px 28px;border-radius:22px;background:linear-gradient(120deg,#081f18 0%,#0d513d 64%,#e92030 160%);color:#fff;box-shadow:0 20px 48px #0b30262c}
+.installment-number{display:flex;align-items:center;gap:8px;padding-right:24px;border-right:1px solid #ffffff30}
+.installment-number strong{color:#fff;font-size:4.5rem;line-height:.8;letter-spacing:-.08em}
+.installment-number span{display:grid;color:#ff7b87;font-size:.82rem;font-weight:800;letter-spacing:.18em;writing-mode:vertical-rl;transform:rotate(180deg)}
+.installment-copy>span{color:#91d3b9;font-size:.7rem;font-weight:800;letter-spacing:.16em}
+.installment-copy h3{margin:4px 0 3px;font-size:clamp(1.35rem,2.5vw,2rem);line-height:1.1}
+.installment-copy p{margin:0;color:#d4e5de;font-size:.8rem}
+.installment-offer>a{padding:12px 16px;border-radius:10px;background:#fff;color:#0b3026;font-size:.8rem;font-weight:800;white-space:nowrap}
+.installment-offer>a:hover{background:#ffedf0;color:#b50f1e}
+@media(max-width:700px){.installment-offer{grid-template-columns:auto 1fr;gap:17px;padding:20px}.installment-number{padding-right:17px}.installment-number strong{font-size:3.7rem}.installment-offer>a{grid-column:1/-1;text-align:center}.installment-copy p{font-size:.75rem}}
