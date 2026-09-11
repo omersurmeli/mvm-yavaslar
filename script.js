@@ -22,6 +22,14 @@ const products=[
 ['Bahçe','Bahçe ve Sulama Ekipmanları','Bakım, sulama ve günlük bahçe işleri için ürünler.','assets/kategori-bahce-hirdavat.webp','center','Çeşitli markalar','Mağaza seçkisi','Ürün grubu'],
 ['Hırdavat','Genel Hırdavat','Tamiratlarda ihtiyaç duyulan pratik çözümler.','assets/kategori-el-aletleri.webp','62% center','Çeşitli markalar','Mağaza seçkisi','Ürün grubu']
 ];
+const productDetails={
+'DYO Tavan Boyası 17,5 kg':['İç mekân tavan yüzeyleri için geliştirilmiştir','Mat ve homojen görünüm sağlar','17,5 kg ambalaj','Uygulama öncesinde yüzey temiz ve sağlam olmalıdır'],
+'DYO Dyoplast 15 L':['İç cephe duvarlarında kullanılır','Mat görünümlü plastik boya','15 litre ambalaj','Renk ve sarfiyat bilgisini mağazamızdan teyit edebilirsiniz'],
+'DYO Dinamik 15 L':['İç cephe uygulamalarına uygundur','Silikon katkılı ve silinebilir yapı','İpek mat görünüm','15 litre ambalaj'],
+'DYO Dyoflex Elyaflı 20 kg':['Çatı ve su yalıtımı uygulamalarında kullanılır','Elyaf katkılı elastik yapı','20 kg ambalaj','Yüzeye uygun astar ve uygulama koşulları için danışınız'],
+'İSONEM L Şeffaf Güç':['Seramik, mermer, cam, metal, ahşap ve kiremit gibi yüzeylerde kullanılabilir','Yüzey görünümünü kapatmayan şeffaf yapı','Su bazlı ve UV dirençli','Uygulama miktarı yüzeye göre değişir'],
+'İSONEM Jelbeton 20 kg':['İç ve dış mekân zeminlerinde kullanılır','Beton, seramik ve mermer yüzeylere uygulanabilir','Renkli veya beton görünümlü seçenek','20 kg ambalaj']
+};
 const catalog=`<section class="catalog" id="urun-vitrini"><div class="catalog-head"><div><p class="eyebrow">Ürün vitrini</p><h2>Mağaza ürünlerini keşfedin</h2></div><p>Ürünleri inceleyin, sepetinize ekleyin; stok teyidinden sonra mağazadan teslim alıp mağazada ödeyin.</p></div><div class="catalog-assurance"><span>✓ Online ödeme yok</span><span>✓ Stok teyidi mağazadan</span><span>✓ Teslim alma zamanı sizden</span></div><div class="filters" role="group" aria-label="Ürün filtresi"></div><p class="result-count" aria-live="polite"></p><div class="product-grid"></div><div class="catalog-empty" hidden></div></section>`;
 document.querySelector('.store-tools').insertAdjacentHTML('afterend',catalog);
 const grid=document.querySelector('.product-grid'),filterBox=document.querySelector('.filters'),count=document.querySelector('.result-count'),empty=document.querySelector('.catalog-empty'),form=document.querySelector('.quick-search'),input=form.querySelector('input'),clearSearch=form.querySelector('.search-clear'),groups=['Tümü',...new Set(products.map(p=>p[0]))];
@@ -30,11 +38,12 @@ const normalize=value=>value.toLocaleLowerCase('tr-TR').normalize('NFD').replace
 function draw(){
  const needle=normalize(searchQuery.trim());
  const visible=products.filter(([cat,name,desc,image,position,brand,pack,label])=>(activeGroup==='Tümü'||cat===activeGroup)&&(!needle||normalize([cat,name,desc,brand,pack,label].join(' ')).includes(needle)));
- grid.innerHTML=visible.map(([cat,name,desc,image,position,brand,pack,label])=>`<article class="product-item"><div class="product-thumb"><img src="${image}" alt="${name}" width="720" height="480" loading="lazy" style="--thumb-pos:${position}"><span class="product-badge">${label}</span></div><div class="product-copy"><small>${cat}</small><h3>${name}</h3><p>${desc}</p><div class="product-meta"><span>${brand}</span><span>${pack}</span></div><div class="store-price">Güncel fiyat mağazada</div><div class="product-actions"><button class="add-cart" data-add="${name}">Sepete ekle</button><button class="ask-product" data-product="${name}">Stok ve fiyat sor</button></div></div></article>`).join('');
+ grid.innerHTML=visible.map(([cat,name,desc,image,position,brand,pack,label])=>`<article class="product-item"><div class="product-thumb"><img src="${image}" alt="${name}" width="720" height="480" loading="lazy" style="--thumb-pos:${position}"><span class="product-badge">${label}</span></div><div class="product-copy"><small>${cat}</small><h3>${name}</h3><p>${desc}</p><div class="product-meta"><span>${brand}</span><span>${pack}</span></div><div class="store-price">Güncel fiyat mağazada</div><div class="product-actions">${productDetails[name]?`<button class="detail-product" data-detail="${name}">Ürünü incele</button>`:''}<button class="add-cart" data-add="${name}">Listeye ekle</button><button class="ask-product" data-product="${name}">Stok ve fiyat sor</button></div></div></article>`).join('');
  count.textContent=searchQuery?`“${searchQuery}” için ${visible.length} sonuç bulundu`:`${visible.length} ürün ve ürün grubu gösteriliyor`;
  empty.hidden=visible.length>0;
  empty.innerHTML=visible.length?'':`<strong>Aramanıza uygun ürün bulunamadı.</strong><p>Ürünün adını bize yazın; stok ve fiyat bilgisini mağazamızdan hızlıca öğrenin.</p><a href="https://wa.me/905389705265?text=${encodeURIComponent('Merhaba MVM Yavaşlar Yapı Market, '+searchQuery+' ürününü arıyorum. Stok ve fiyat bilgisi alabilir miyim?')}" target="_blank" rel="noopener">WhatsApp’tan sorun →</a>`;
  clearSearch.hidden=!searchQuery;
+ grid.querySelectorAll('[data-detail]').forEach(b=>b.onclick=()=>openProductDetail(b.dataset.detail));
  grid.querySelectorAll('[data-product]').forEach(b=>b.onclick=()=>openWhatsApp(b.dataset.product));
  grid.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>addToCart(b.dataset.add));
 }
@@ -49,6 +58,24 @@ document.querySelectorAll('.quick-chips [data-query]').forEach(b=>b.onclick=()=>
 draw();
 const campaignProducts={'Dyoflex Elyaflı 20 kg':'DYO Dyoflex Elyaflı 20 kg','DYO Tavan 17,5 kg':'DYO Tavan Boyası 17,5 kg','Dyoplast 15 L':'DYO Dyoplast 15 L','DYO Dinamik 15 L':'DYO Dinamik 15 L'};
 document.querySelectorAll('.campaigns article').forEach(card=>{const title=card.querySelector('h3')?.textContent.trim(),name=campaignProducts[title];if(!name)return;const link=card.querySelector('a');link.insertAdjacentHTML('afterend',`<button type="button" class="campaign-add" data-campaign-add="${name}">Sepete ekle</button>`);card.querySelector('[data-campaign-add]').onclick=()=>addToCart(name)});
+document.body.insertAdjacentHTML('beforeend',`<dialog class="product-dialog" aria-labelledby="product-dialog-title"><button type="button" class="product-dialog-close" aria-label="Ürün detayını kapat">×</button><div class="product-dialog-grid"><div class="product-dialog-image"><img src="" alt="" width="720" height="720"></div><div class="product-dialog-copy"><small class="product-dialog-category"></small><h2 id="product-dialog-title"></h2><p class="product-dialog-description"></p><div class="product-dialog-meta"></div><h3>Ürün hakkında</h3><ul></ul><p class="product-dialog-note">Uygunluk, renk, sarfiyat ve uygulama koşulları yüzeye göre değişebilir. Satın almadan önce mağazamızdan teyit alınız.</p><div class="product-dialog-actions"><button type="button" class="detail-add">Listeye ekle</button><a class="detail-ask" target="_blank" rel="noopener">Stok ve fiyat sor</a></div></div></div></dialog>`);
+const productDialog=document.querySelector('.product-dialog'),dialogClose=productDialog.querySelector('.product-dialog-close');
+let detailProductName='';
+function openProductDetail(name){
+ const product=products.find(item=>item[1]===name);if(!product||!productDetails[name])return;
+ const [cat,productName,desc,image,position,brand,pack]=product;detailProductName=productName;
+ const img=productDialog.querySelector('img');img.src=image;img.alt=productName;img.style.objectPosition=position;
+ productDialog.querySelector('.product-dialog-category').textContent=cat;
+ productDialog.querySelector('h2').textContent=productName;
+ productDialog.querySelector('.product-dialog-description').textContent=desc;
+ productDialog.querySelector('.product-dialog-meta').innerHTML=`<span>${brand}</span><span>${pack}</span><span>Mağazadan teslim</span>`;
+ productDialog.querySelector('ul').innerHTML=productDetails[name].map(item=>`<li>${item}</li>`).join('');
+ productDialog.querySelector('.detail-ask').href='https://wa.me/905389705265?text='+encodeURIComponent('Merhaba MVM Yavaşlar Yapı Market, '+productName+' için stok ve fiyat bilgisi almak istiyorum.');
+ productDialog.showModal();
+}
+dialogClose.onclick=()=>productDialog.close();
+productDialog.addEventListener('click',e=>{if(e.target===productDialog)productDialog.close()});
+productDialog.querySelector('.detail-add').onclick=()=>{productDialog.close();addToCart(detailProductName)};
 function openWhatsApp(product){location.href=`https://wa.me/905389705265?text=${encodeURIComponent('Merhaba MVM Yavaşlar Yapı Market, '+product+' için stok ve fiyat bilgisi almak istiyorum.')}`}
 document.getElementById('iletisim').insertAdjacentHTML('beforebegin',`<section class="trust-section"><p class="eyebrow">Neden MVM Yavaşlar?</p><h2>Alışverişinizi kolaylaştıran yerel hizmet</h2><div class="trust-grid"><article><span>💬</span><h3>Hızlı bilgi</h3><p>Ürün, stok ve fiyat için doğrudan mağazaya ulaşın.</p></article><article><span>🧭</span><h3>Doğru ürüne yönlendirme</h3><p>İhtiyacınızı anlatın, uygun ürün grubunu birlikte belirleyelim.</p></article><article><span>📍</span><h3>Kepez’de yakınınızda</h3><p>Ahatlı Mahallesi’ndeki mağazamızdan ürünü inceleyin.</p></article><article><span>🧰</span><h3>Geniş ürün grubu</h3><p>Yapı, boya, elektrik, tesisat ve hırdavat tek noktada.</p></article></div></section><section class="faq"><p class="eyebrow">Merak edilenler</p><h2>Sık sorulan sorular</h2><div class="faq-list"><details><summary>Ürün fiyatlarını sitede neden göremiyorum?</summary><p>Fiyatlar ve kampanyalar değişebildiği için en güncel bilgiyi telefon veya WhatsApp üzerinden iletiyoruz.</p></details><details><summary>Bir ürünün stokta olup olmadığını nasıl öğrenebilirim?</summary><p>Ürün vitrini veya hızlı sorgulama alanından ürünü seçerek hazır WhatsApp mesajı gönderebilirsiniz.</p></details><details><summary>Mağazaya nasıl ulaşabilirim?</summary><p>İletişim bölümündeki Yol Tarifi bağlantısı sizi Ahatlı Mah. Ulusoy Cad. No:66 Kepez / Antalya adresine yönlendirir.</p></details></div></section>`);
 document.body.insertAdjacentHTML('beforeend',`<div class="mobile-actions"><a href="tel:+902422272575">☎ Hemen Ara</a><a href="https://wa.me/905389705265">● WhatsApp</a></div>`);
