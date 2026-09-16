@@ -92,11 +92,11 @@ nav a:hover{color:var(--r)}
 .september-campaigns-head span{color:#fff500;font-size:.75rem;font-weight:900;letter-spacing:1.3px;text-transform:uppercase}
 .september-campaigns-head h3{margin:3px 0 0;font-size:clamp(1.5rem,3vw,2.2rem)}
 .september-campaigns-head p{max-width:440px;margin:0;color:#dfe5ff;font-size:.85rem}
-.poster-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.poster-grid a{position:relative;overflow:hidden;border:1px solid #ffffff3d;border-radius:14px;background:#111a64;box-shadow:0 12px 28px #0003;transition:transform .2s,box-shadow .2s}
+.poster-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.poster-grid a{position:relative;overflow:hidden;border:1px solid #ffffff3d;border-radius:18px;background:#111a64;box-shadow:0 12px 28px #0003;transition:transform .2s,box-shadow .2s}
 .poster-grid a:hover{transform:translateY(-4px);box-shadow:0 18px 34px #0005}
-.poster-grid img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.poster-grid span{display:block;padding:11px 10px;color:#fff;font-size:.72rem;font-weight:800;text-align:center}
+.poster-grid img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;background:#222d8d}
+.poster-grid span{display:block;padding:15px 12px;color:#fff;font-size:.9rem;font-weight:800;text-align:center}
 .poster-note{margin:17px 0 0;color:#dfe5ff;font-size:.76rem;text-align:center}
 .categories{margin-left:calc(max(24px,calc((100vw - 1180px)/2))*-1);margin-right:calc(max(24px,calc((100vw - 1180px)/2))*-1);padding-left:max(24px,calc((100vw - 1180px)/2));padding-right:max(24px,calc((100vw - 1180px)/2));background:var(--cream)}
 .category-grid article{padding:27px;border:1px solid #d9dfda;border-radius:18px;background:#fff}
@@ -122,7 +122,7 @@ footer{display:flex;align-items:center;justify-content:space-between;gap:20px;pa
 .footer-brand img{width:35px}
 .floating{position:fixed;right:20px;bottom:20px;z-index:15;padding:12px 17px;border-radius:999px;background:#19ad67;color:#fff;font-size:.82rem;font-weight:800;box-shadow:0 10px 30px #0003}
 @media(max-width:900px){.header-cta{display:none}
-.poster-grid{grid-template-columns:repeat(3,1fr)}
+.poster-grid{gap:16px}
 .menu{display:block}
 nav{position:absolute;left:0;right:0;top:82px;display:none;flex-direction:column;padding:20px 24px;background:#fff;border-bottom:1px solid var(--line)}
 nav.open{display:flex}
@@ -134,7 +134,7 @@ footer{flex-wrap:wrap}
 .topbar>span{display:none}
 }
 @media(max-width:600px){.topbar{justify-content:center}
-.september-campaigns{margin-inline:-2px;padding:17px;border-radius:18px}.september-campaigns-head{display:block}.september-campaigns-head p{margin-top:9px}.poster-grid{grid-template-columns:repeat(2,1fr);gap:10px}.poster-grid span{font-size:.68rem}
+.september-campaigns{margin-inline:-2px;padding:17px;border-radius:18px}.september-campaigns-head{display:block}.september-campaigns-head p{margin-top:9px}.poster-grid{grid-template-columns:1fr;gap:18px}.poster-grid span{padding:13px 10px;font-size:.82rem}
 .topbar div a:last-child{display:none}
 .hero{padding-top:44px}
 .hero h1{font-size:2.75rem}
