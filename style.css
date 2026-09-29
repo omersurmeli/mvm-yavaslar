@@ -161,6 +161,26 @@ footer{display:grid;text-align:center}
 .slide{transition:none}
 }
 
+/* Canlı vitrin ve yumuşak sayfa hareketleri */
+.poster-carousel{position:relative}
+.poster-grid.is-carousel{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:4px 2px 16px}
+.poster-grid.is-carousel::-webkit-scrollbar{display:none}
+.poster-grid.is-carousel>a{flex:0 0 calc(50% - 11px);scroll-snap-align:start}
+.poster-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:14px 2px 0;color:#fff}
+.poster-progress{display:flex;flex:1;gap:7px;justify-content:center}
+.poster-progress button{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:#ffffff66;transition:width .25s,background .25s}
+.poster-progress button.active{width:28px;background:#fff500}
+.poster-arrow{display:grid;place-items:center;width:44px;height:44px;border:1px solid #ffffff55;border-radius:50%;background:#ffffff12;color:#fff;cursor:pointer;transition:transform .2s,background .2s}
+.poster-arrow:hover,.poster-arrow:focus-visible{transform:scale(1.06);background:#ffffff28;outline:2px solid #fff500;outline-offset:2px}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.is-visible{opacity:1;transform:none}
+.product-item,.campaigns>article,.category-grid article,.trust-grid article{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.product-item:hover,.campaigns>article:hover,.category-grid article:hover,.trust-grid article:hover{transform:translateY(-7px);border-color:#17604766;box-shadow:0 22px 42px #0b302622}
+.storefront>img{transition:transform 7s ease}
+.storefront:hover>img{transform:scale(1.035)}
+@media(max-width:600px){.poster-grid.is-carousel>a{flex-basis:100%}.poster-controls{margin-top:8px}.poster-arrow{width:40px;height:40px}}
+@media(prefers-reduced-motion:reduce){.poster-grid.is-carousel{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.product-item,.campaigns>article,.category-grid article,.trust-grid article,.storefront>img{transition:none}}
+
 /* Görsel arka planlı güncel duyurular */
 .board{min-height:560px;background-color:#08152a;background-image:linear-gradient(#06112680,#06112680),var(--board-bg);background-position:center,var(--board-pos,center);background-size:cover;transition:background-image .35s ease}
 .board-head,.board-foot{position:relative;z-index:3;background:#061126a6;backdrop-filter:blur(6px)}

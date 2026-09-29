@@ -95,3 +95,31 @@ cartItems.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.datas
 cartEmpty.querySelector('a').onclick=closeCart;
 pickupForm.onsubmit=e=>{e.preventDefault();if(!cart.length)return;const data=new FormData(pickupForm);const order='MVM-'+Date.now().toString().slice(-6);const list=cart.map(x=>'• '+x.name+' — '+x.qty+' adet').join('\n');const message=`Merhaba MVM Yavaşlar Yapı Market, mağazadan teslim rezervasyonu oluşturmak istiyorum.\n\nSipariş No: ${order}\nAd Soyad: ${data.get('name')}\nTelefon: ${data.get('phone')}\nTeslim Alma: ${data.get('pickup')}\n\nÜrünler:\n${list}\n\nNot: ${data.get('note')||'-'}\n\nStok ve fiyat teyidini bekliyorum. Ödemeyi mağazada yapacağım.`;window.open('https://wa.me/905389705265?text='+encodeURIComponent(message),'_blank','noopener')};
 renderCart();
+
+// Kampanya afişlerini otomatik ilerleyen, dokunmatik uyumlu bir vitrine dönüştürür.
+const posterGrid=document.querySelector('.poster-grid');
+if(posterGrid){
+ const posters=[...posterGrid.children];
+ posterGrid.classList.add('is-carousel');
+ posterGrid.parentElement.classList.add('poster-carousel');
+ posterGrid.insertAdjacentHTML('afterend',`<div class="poster-controls" aria-label="Kampanya afişi kontrolleri"><button class="poster-arrow poster-prev" type="button" aria-label="Önceki kampanya">←</button><div class="poster-progress" role="tablist" aria-label="Kampanya afişleri">${posters.map((_,i)=>`<button type="button" role="tab" aria-label="${i+1}. kampanyaya git" class="${i===0?'active':''}"></button>`).join('')}</div><button class="poster-arrow poster-next" type="button" aria-label="Sonraki kampanya">→</button></div>`);
+ const dots=[...document.querySelectorAll('.poster-progress button')];
+ const visibleCount=()=>matchMedia('(max-width:600px)').matches?1:2;
+ const currentIndex=()=>Math.max(0,Math.round(posterGrid.scrollLeft/(posters[0].getBoundingClientRect().width+22)));
+ const goTo=index=>{const safe=(index+posters.length)%posters.length;posterGrid.scrollTo({left:posters[safe].offsetLeft-posterGrid.offsetLeft,behavior:'smooth'})};
+ const updateDots=()=>{const index=currentIndex();dots.forEach((dot,i)=>dot.classList.toggle('active',i===index))};
+ document.querySelector('.poster-prev').onclick=()=>goTo(currentIndex()-visibleCount());
+ document.querySelector('.poster-next').onclick=()=>goTo(currentIndex()+visibleCount());
+ dots.forEach((dot,i)=>dot.onclick=()=>goTo(i));
+ posterGrid.addEventListener('scroll',()=>requestAnimationFrame(updateDots),{passive:true});
+ let autoPoster=setInterval(()=>goTo(currentIndex()+visibleCount()),5000);
+ posterGrid.parentElement.addEventListener('mouseenter',()=>clearInterval(autoPoster));
+ posterGrid.parentElement.addEventListener('mouseleave',()=>{clearInterval(autoPoster);autoPoster=setInterval(()=>goTo(currentIndex()+visibleCount()),5000)});
+}
+
+// Bölümler ekrana girdikçe yumuşak biçimde görünür.
+const revealTargets=document.querySelectorAll('.steps,.section,.storefront,.store-tools,.catalog,.brand-showcase,.promo-banner,.trust-section,.faq,.contact');
+if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+ const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -45px'});
+ revealTargets.forEach(element=>{element.classList.add('reveal');revealObserver.observe(element)});
+}else revealTargets.forEach(element=>element.classList.add('is-visible'));
