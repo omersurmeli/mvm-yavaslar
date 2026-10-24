@@ -1,6 +1,7 @@
 document.querySelectorAll('img[src="assets/mvm-logo.svg"]').forEach(img=>{img.src='assets/mvm-logo-blue.webp';img.alt=img.closest('.brand,.footer-brand')?'MVM Yavaşlar Yapı Market logosu':''});const favicon=document.querySelector('link[rel="icon"]');if(favicon){favicon.href='assets/mvm-logo-blue.webp';favicon.type='image/webp'}
 document.getElementById('year').textContent=new Date().getFullYear();
 const menu=document.querySelector('.menu'),nav=document.getElementById('nav');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&nav.classList.contains('open')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.focus()}});
 const board=document.querySelector('.board'),slides=[...board.querySelectorAll('.slide')],dots=[...board.querySelectorAll('.dots button')],counter=board.querySelector('.counter');let current=0,timer;function show(i){current=(i+slides.length)%slides.length;slides.forEach((s,n)=>{s.classList.toggle('active',n===current);s.setAttribute('aria-hidden',String(n!==current))});dots.forEach((d,n)=>{d.classList.toggle('active',n===current);d.setAttribute('aria-selected',String(n===current))});const activeSlide=slides[current];board.style.setProperty('--board-bg',activeSlide.style.getPropertyValue('--slide-bg'));board.style.setProperty('--board-pos',activeSlide.style.getPropertyValue('--bg-pos')||'center');counter.textContent=`${String(current+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`}function play(){clearInterval(timer);if(!matchMedia('(prefers-reduced-motion:reduce)').matches)timer=setInterval(()=>show(current+1),5500)}board.querySelector('.prev').onclick=()=>{show(current-1);play()};board.querySelector('.next').onclick=()=>{show(current+1);play()};dots.forEach((d,i)=>d.onclick=()=>{show(i);play()});board.onmouseenter=()=>clearInterval(timer);board.onmouseleave=play;show(0);play();
 const categories=document.getElementById('urunler');
 const brands=[['DYO','Boya ürünleri','https://www.dyo.com.tr/','dyo.com.tr'],['Bianca','Boya ürünleri','https://www.bianca.com.tr/','bianca.com.tr'],['İSONEM','Yalıtım çözümleri','https://isonem.com.tr/','isonem.com.tr'],['Kalde','Boru sistemleri','https://kalde.com/','kalde.com'],['CMS','Batarya grubu','https://www.curkuslar.com.tr/','curkuslar.com.tr'],['Kale','Batarya ve vitrifiye','https://www.kale.com.tr/','kale.com.tr'],['VitrA','Banyo ürünleri','https://www.vitra.com.tr/','vitra.com.tr'],['Artema','Armatür ve batarya','https://www.artema.com.tr/','artema.com.tr'],['SIBAX','Yapı ürünleri','https://www.sibakimya.com.tr/','sibakimya.com.tr'],['Henkel','Yapıştırıcı ve kimyasallar','https://www.henkel-adhesives.com/tr/tr.html','henkel-adhesives.com']];
@@ -98,7 +99,9 @@ renderCart();
 
 // Kampanya afişlerini otomatik ilerleyen, dokunmatik uyumlu bir vitrine dönüştürür.
 const posterGrid=document.querySelector('.poster-grid');
-if(posterGrid){
+function initPosterCarousel(){
+ if(!posterGrid||posterGrid.dataset.ready)return;
+ posterGrid.dataset.ready='true';
  const posters=[...posterGrid.children];
  posterGrid.classList.add('is-carousel');
  posterGrid.parentElement.classList.add('poster-carousel');
@@ -116,6 +119,8 @@ if(posterGrid){
  posterGrid.parentElement.addEventListener('mouseenter',()=>clearInterval(autoPoster));
  posterGrid.parentElement.addEventListener('mouseleave',()=>{clearInterval(autoPoster);autoPoster=setInterval(()=>goTo(currentIndex()+visibleCount()),5000)});
 }
+const campaignArchive=document.querySelector('.campaign-archive');
+if(campaignArchive){campaignArchive.addEventListener('toggle',()=>{if(campaignArchive.open)initPosterCarousel()})}else initPosterCarousel();
 
 // Bölümler ekrana girdikçe yumuşak biçimde görünür.
 const revealTargets=document.querySelectorAll('.steps,.section,.storefront,.store-tools,.catalog,.brand-showcase,.promo-banner,.trust-section,.faq,.contact');
@@ -123,3 +128,24 @@ if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduc
  const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -45px'});
  revealTargets.forEach(element=>{element.classList.add('reveal');revealObserver.observe(element)});
 }else revealTargets.forEach(element=>element.classList.add('is-visible'));
+
+// Türkiye saatine göre mağazanın anlık açık/kapalı bilgisini gösterir.
+const storeStatus=document.getElementById('store-status');
+if(storeStatus){
+ const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Istanbul',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+ const read=type=>parts.find(part=>part.type===type)?.value;
+ const day=read('weekday'),minutes=Number(read('hour'))*60+Number(read('minute'));
+ const sunday=day==='Sun',opens=sunday?8*60+30:7*60+45,closes=sunday?18*60:19*60+30;
+ const open=minutes>=opens&&minutes<closes;
+ const closeText=sunday?'18.00':'19.30';
+ const nextText=minutes<opens?`Bugün ${sunday?'08.30':'07.45'}`:(sunday?'Pazartesi 07.45':`Yarın ${day==='Sat'?'08.30':'07.45'}`);
+ storeStatus.textContent=open?`Şu an açık · ${closeText}’a kadar`:`Şu an kapalı · Sonraki açılış ${nextText}`;
+ storeStatus.classList.add(open?'is-open':'is-closed');
+}
+
+// Sayfa kaydırılırken menüde etkin bölümü belirtir.
+const sectionLinks=[...nav.querySelectorAll('a[href^="#"]')];
+if('IntersectionObserver' in window){
+ const navObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){sectionLinks.forEach(link=>link.removeAttribute('aria-current'));const active=sectionLinks.find(link=>link.getAttribute('href')===`#${entry.target.id}`);if(active)active.setAttribute('aria-current','true')}}),{rootMargin:'-35% 0px -55%',threshold:0});
+ sectionLinks.forEach(link=>{const section=document.querySelector(link.getAttribute('href'));if(section)navObserver.observe(section)});
+}
