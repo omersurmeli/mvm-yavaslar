@@ -116,6 +116,9 @@ nav a:hover{color:var(--r)}
 .contact-card{display:grid;gap:7px;padding:30px;border-radius:18px;background:#fff}
 .contact-card>span{color:var(--muted);font-size:.77rem}
 .contact-card>strong{font-size:1.9rem}
+.business-hours{display:grid!important;gap:8px!important;margin:14px 0 2px!important;padding:15px 17px;border-radius:12px;background:#f1f6f3;color:var(--ink)!important}
+.business-hours p{display:flex;justify-content:space-between;gap:18px;margin:0;font-size:.84rem}
+.business-hours span{color:var(--g2);font-weight:800}
 .contact-card div{display:flex;gap:16px;margin-top:10px;color:var(--r);font-size:.8rem;font-weight:800}
 footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:27px;padding-bottom:27px;background:#071f18;color:#b9cbc4;font-size:.74rem}
 .footer-brand{display:flex;align-items:center;gap:10px;color:#fff}
