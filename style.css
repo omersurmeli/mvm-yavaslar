@@ -109,6 +109,9 @@ nav a:hover{color:var(--r)}
 .campaign-archive .september-campaigns{margin:14px 0 0}
 .archive-warning{margin:0;padding:14px 16px;border-left:4px solid #e6a500;border-radius:8px;background:#fff8dc;color:#5e4b00;font-size:.84rem}
 nav a[aria-current="true"]{color:var(--r)}
+.catalog-more{display:block;margin:22px auto 0;padding:13px 22px;border:0;border-radius:11px;background:var(--g);color:#fff;font-weight:800;cursor:pointer}
+.catalog-more[hidden]{display:none}
+.catalog-more:hover{background:var(--g2)}
 .categories{margin-left:calc(max(24px,calc((100vw - 1180px)/2))*-1);margin-right:calc(max(24px,calc((100vw - 1180px)/2))*-1);padding-left:max(24px,calc((100vw - 1180px)/2));padding-right:max(24px,calc((100vw - 1180px)/2));background:var(--cream)}
 .category-grid article{padding:27px;border:1px solid #d9dfda;border-radius:18px;background:#fff}
 .category-grid i{font-style:normal;font-size:1.7rem}
@@ -153,6 +156,7 @@ footer{flex-wrap:wrap}
 }
 @media(max-width:600px){.topbar{justify-content:center}
 .campaign-archive>summary{align-items:flex-start;padding:17px}.campaign-archive>summary small{display:none}.campaign-archive-body{padding:0 10px 10px}
+.categories{display:none}
 .september-campaigns{margin-inline:-2px;padding:17px;border-radius:18px}.september-campaigns-head{display:block}.september-campaigns-head p{margin-top:9px}.poster-grid{grid-template-columns:1fr;gap:18px}.poster-grid span{padding:13px 10px;font-size:.82rem}
 .topbar div a:last-child{display:none}
 .hero{padding-top:44px}
