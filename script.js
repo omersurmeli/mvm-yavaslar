@@ -1,4 +1,4 @@
-document.querySelectorAll('img[src="assets/mvm-logo.svg"]').forEach(img=>{img.src='assets/mvm-logo-blue.webp';img.alt=img.closest('.brand,.footer-brand')?'MVM Yavaşlar Yapı Market logosu':''});const favicon=document.querySelector('link[rel="icon"]');if(favicon){favicon.href='assets/mvm-logo-blue.webp';favicon.type='image/webp'}
+const favicon=document.querySelector('link[rel="icon"]');if(favicon){favicon.href='assets/mvm-logo-white-blue.svg';favicon.type='image/svg+xml'}
 document.getElementById('year').textContent=new Date().getFullYear();
 const menu=document.querySelector('.menu'),nav=document.getElementById('nav');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&nav.classList.contains('open')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.focus()}});

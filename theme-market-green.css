@@ -104,7 +104,7 @@ main{background:#f6f8f7}
 
 /* Belirgin üst logo */
 header .brand{flex:0 0 auto;padding:5px 7px;border:1px solid #d5e4dc;border-radius:13px;background:#fff;box-shadow:0 7px 20px rgba(8,74,46,.14)}
-header .brand>img{display:block;width:150px!important;height:auto!important;aspect-ratio:1200/499;object-fit:contain;border-radius:8px;background:#050807;filter:saturate(1.08) contrast(1.06)}
+header .brand>img{display:block;width:150px!important;height:auto!important;aspect-ratio:1200/500;object-fit:contain;border-radius:8px;background:#fff}
 header .brand:hover{border-color:#87c5a5;box-shadow:0 9px 24px rgba(8,116,67,.2)}
 @media(max-width:700px){header{min-height:82px!important;gap:8px!important}header .brand{padding:4px 5px;border-radius:11px}header .brand>img{width:124px!important;height:auto!important}.menu{padding:10px 11px!important}.cart-trigger{padding:10px 12px!important}}
 @media(max-width:380px){header .brand>img{width:108px!important}header .brand{padding:3px 4px}.menu{padding:9px!important;font-size:.78rem}.cart-trigger{padding:9px 10px!important;font-size:.76rem}}
