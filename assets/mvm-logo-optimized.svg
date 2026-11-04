@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+<title id="title">MVM Yavaşlar Yapı Market</title>
+<desc id="desc">Turuncu çatı simgeli mavi MVM Yavaşlar Yapı Market logosu</desc>
+<g fill="none" stroke="#f58220" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M45 142 224 42l178 100"/>
+  <path d="M335 102v-48h45v75"/>
+</g>
+<text x="224" y="292" text-anchor="middle" fill="#123f92" font-family="Arial Black,Arial,sans-serif" font-size="176" font-weight="900" letter-spacing="-16">MVM</text>
+<text x="446" y="220" fill="#123f92" font-family="Arial Black,Arial,sans-serif" font-size="142" font-weight="900" letter-spacing="-8">MVM</text>
+<text x="448" y="306" fill="#123f92" font-family="Arial Black,Arial,sans-serif" font-size="74" font-weight="900" letter-spacing="1">YAVAŞLAR</text>
+<text x="451" y="365" fill="#123f92" font-family="Arial,Helvetica,sans-serif" font-size="36" font-weight="700" letter-spacing="12">YAPI MARKET</text>
+</svg>
