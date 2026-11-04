@@ -42,3 +42,12 @@
   .campaign-grid,.product-grid{grid-template-columns:1fr}
   .product-image{aspect-ratio:1.65}.product-card h3{min-height:0;font-size:18px}.product-desc{min-height:0;font-size:14px}.product-body{padding:17px}
 }
+
+
+/* Category SEO links and paint list action */
+.paint-add-list{width:100%;margin-top:9px;background:transparent;color:#fff;border-color:#ffffff65}
+.paint-add-list:hover{background:#ffffff12}
+.footer-categories{display:flex;flex-wrap:wrap;gap:8px 18px;padding:20px 0;border-top:1px solid #ffffff18;border-bottom:1px solid #ffffff18}
+.footer-categories a{color:#dceae3;font-size:11px;text-decoration:none}
+.footer-categories a:hover{text-decoration:underline;color:#fff}
+@media(max-width:650px){.footer-categories{gap:9px 14px;padding:18px 0}.footer-categories a{font-size:12px;line-height:1.4}.paint-add-list{min-height:44px;font-size:12px}}
