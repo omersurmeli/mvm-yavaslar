@@ -5,7 +5,7 @@
   const paints = window.MVM_PAINTS;
   const format = (value, digits = 1) => new Intl.NumberFormat('tr-TR', {maximumFractionDigits:digits}).format(value);
   const money = value => new Intl.NumberFormat('tr-TR', {style:'currency',currency:'TRY',maximumFractionDigits:2}).format(value);
-  const wa = text => 'https://wa.me/905389705265?text=' + encodeURIComponent(text);
+  const wa = text => 'tel:+902422272575';
   const normalize = value => String(value).toLocaleLowerCase('tr-TR').replace(/ı/g,'i').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
   $('year').textContent = new Date().getFullYear();
 
@@ -63,7 +63,7 @@
   const readNumber=id=>{const v=$(id).value.trim();if(v==='')return null;const n=Number(v.replace(',','.'));return Number.isFinite(n)?n:null;};
   let areaMode='direct',lastPaintResult=null;
   const currentPaint=()=>paints.find(p=>p.id===$('paint-product').value);
-  $('paint-add-list').addEventListener('click',()=>{const selected=currentPaint();const catalogProduct=selected&&products.find(product=>product.paint===selected.id);if(catalogProduct){addProduct(catalogProduct.id);return;}toast('Bu boya katalog ürününe bağlı değil. Güncel fiyat için WhatsApp düğmesini kullanabilirsiniz.');});
+  $('paint-add-list').addEventListener('click',()=>{const selected=currentPaint();const catalogProduct=selected&&products.find(product=>product.paint===selected.id);if(catalogProduct){addProduct(catalogProduct.id);return;}toast('Bu boya katalog ürününe bağlı değil. Güncel fiyat için mağazamızı arayabilirsiniz.');});
   function selectPaint(){const p=currentPaint(),custom=!p;$('custom-product-fields').hidden=!custom;$('custom-pack').hidden=!custom;$('paint-pack').hidden=custom;$('paint-surface').disabled=custom;$('paint-coats').disabled=Boolean(p?.baseCoats===2);$('paint-coats').value='2';$('paint-price').value='';$('primer-field').hidden=!p?.primers;
     if(p){$('paint-pack').innerHTML=p.packs.map(pack=>`<option value="${pack}" ${pack===(p.unit==='kg'?17.5:15)?'selected':''}>${format(pack)} ${p.unit}</option>`).join('');$('paint-source').href='https://dekoratif.dyo.com.tr/urunler/'+p.slug;$('paint-source').hidden=false;if(p.primers){const names={filler:'Teknotex Dolgulu Astar',binder:'Dyobinder',alkali:'Alkali Dayanımlı Astar'};$('paint-primer').innerHTML=p.primers.map(id=>`<option value="${id}">${names[id]}</option>`).join('');}}else{$('paint-source').hidden=true;}updatePaint();
   }
